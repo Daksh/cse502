@@ -9,6 +9,8 @@ set -e
 #
 PROJECT_NAME=hclib
 CWD=$(printf "%q" "$(pwd)")
+echo "Daksh@CWD: ${CWD}"
+echo "Daksh@PWD: ${PWD}"
 PREFIX_FLAGS="--prefix=\"${INSTALL_PREFIX:=${CWD}/${PROJECT_NAME}-install}\""
 : ${NPROC:=1}
 
@@ -29,9 +31,12 @@ echo "[${PROJECT_NAME}] Bootstrap..."
 echo "[${PROJECT_NAME}] Configure..."
 
 COMPTREE="$PWD/compileTree"
+echo "Daksh@COMPTREE: ${COMPTREE}"
 mkdir -p "${COMPTREE}"
 
 cd "${COMPTREE}"
+echo "Daksh@PWD: ${PWD}"
+echo "Daksh@configure: ../configure ${PREFIX_FLAGS} ${HCUPC_FLAGS} ${HCLIB_FLAGS} ${HC_CUDA_FLAGS} $*"
 ../configure ${PREFIX_FLAGS} ${HCUPC_FLAGS} ${HCLIB_FLAGS} ${HC_CUDA_FLAGS} $*
 
 #
