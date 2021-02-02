@@ -1,5 +1,7 @@
 # Installation
 
+NOTE: The path at which you place this repository must not have any spaces in between. This can cause the installation scripts to recognize the path as two separate arguments instead of one. 
+
 ## macOS 
 
 Install Requirement:
