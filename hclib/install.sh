@@ -8,7 +8,8 @@ set -e
 # Defining some variables
 #
 PROJECT_NAME=hclib
-PREFIX_FLAGS="--prefix=${INSTALL_PREFIX:=${PWD}/${PROJECT_NAME}-install}"
+CWD=$(printf "%q" "$(pwd)")
+PREFIX_FLAGS="--prefix=\"${INSTALL_PREFIX:=${CWD}/${PROJECT_NAME}-install}\""
 : ${NPROC:=1}
 
 # Don't clobber our custom header template
@@ -27,11 +28,10 @@ echo "[${PROJECT_NAME}] Bootstrap..."
 #
 echo "[${PROJECT_NAME}] Configure..."
 
-COMPTREE=$PWD/compileTree
-mkdir -p ${COMPTREE}
+COMPTREE="$PWD/compileTree"
+mkdir -p "${COMPTREE}"
 
-cd ${COMPTREE}
-
+cd "${COMPTREE}"
 ../configure ${PREFIX_FLAGS} ${HCUPC_FLAGS} ${HCLIB_FLAGS} ${HC_CUDA_FLAGS} $*
 
 #
