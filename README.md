@@ -6,7 +6,7 @@ NOTE: The path at which you place this repository must not have any spaces in be
 
 Install Requirement:
 ```bash
-brew install automake
+brew install automake libtool
 ```
 
 Run HClib install script:
